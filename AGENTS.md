@@ -26,31 +26,30 @@ If neither applies, don't add it.
 2. Follow the file format:
 
 ```markdown
-# Title: What AI Gets Wrong
+# Title That Describes the Mistake
 
-## The Problem
+**Impact**: HIGH|MEDIUM|LOW — One sentence on why this matters.
+
+## Problem
 
 Short description of the mistake AI makes.
 
-## Wrong ❌
+## ❌ Incorrect
 
 ```vue
 <!-- code example of the incorrect pattern -->
 ```
 
-## Correct ✅
+## ✅ Correct
 
 ```vue
 <!-- code example of the correct pattern -->
 ```
 
-## Why
+## Checklist
 
-One paragraph explanation of why the wrong pattern fails and why the correct one works.
-
-## Rule
-
-> One-sentence rule for the AI to follow.
+- [ ] Concrete, actionable check 1
+- [ ] Concrete, actionable check 2
 ```
 
 3. Add a one-line entry to the relevant section in `SKILL.md`:
