@@ -1,0 +1,69 @@
+{
+  "skill_name": "vue-component",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a Vue 3 search input component that emits the search value with debounce. It should support v-model from the parent.",
+      "expected_output": "A single-file Vue component using <script setup lang='ts'> with defineModel() or modelValue/update:modelValue for v-model support, ref() for internal state, and scoped styles.",
+      "files": [],
+      "expectations": [
+        "Uses <script setup lang='ts'>",
+        "Uses defineModel() or modelValue + update:modelValue pattern for v-model",
+        "Does NOT use Vue 2 pattern (value prop + input event)",
+        "Does not use reactive() for a single string value",
+        "Style block has scoped attribute"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Build a Vue component that fetches a list of users from an API, shows them in a filterable list, and displays a detail card when one is selected.",
+      "expected_output": "Multiple Vue components split by responsibility: a smart/container component or composable for data fetching, and dumb/presentational components for the list and detail card. Filtering uses computed().",
+      "files": [],
+      "expectations": [
+        "Splits into multiple components, not a single mega-component",
+        "Separates data fetching (composable or smart component) from presentational UI",
+        "Uses computed() for filtering, not a method called in template",
+        "Does not put API calls or async logic inside computed()",
+        "Uses stable unique :key on v-for (not array index)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Convert this React component to Vue 3:\n\nfunction Counter({ initialCount, onChange }) {\n  const [count, setCount] = useState(initialCount);\n  useEffect(() => { onChange(count); }, [count]);\n  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;\n}",
+      "expected_output": "A Vue 3 SFC using ref() for count, watch() for the side effect, defineEmits for the onChange callback, and defineProps with a default value for initialCount.",
+      "files": [],
+      "expectations": [
+        "Uses ref() not reactive() for count state",
+        "Uses watch() or watchEffect() for the side effect, not computed()",
+        "Uses defineEmits to emit events, not a callback function prop",
+        "Uses withDefaults or defineProps default for initialCount",
+        "Does not use .value on refs in template"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Create an accessible dropdown select component in Vue 3 with keyboard navigation support.",
+      "expected_output": "A Vue SFC with proper ARIA attributes, semantic HTML (<button> for trigger), keyboard handlers (Escape, Enter, Space), and role attributes on the list.",
+      "files": [],
+      "expectations": [
+        "Uses <button> for the dropdown trigger, not <div> or <span>",
+        "Includes aria-haspopup and aria-expanded on the trigger",
+        "Supports Escape key to close the dropdown",
+        "Supports Enter and/or Space key to select an option",
+        "List container has role='listbox' and options have role='option'"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I have a Vue component where I watch a prop but the watcher never fires after the first render. Here's my code:\n\nconst { userId } = defineProps<{ userId: number }>()\nwatch(userId, async (id) => { user.value = await fetchUser(id) })\n\nWhat's wrong and how to fix it?",
+      "expected_output": "Identifies that destructured props lose reactivity in Vue < 3.5, and suggests using a getter function watch(() => props.userId, ...) or Vue 3.5+ reactive destructure.",
+      "files": [],
+      "expectations": [
+        "Identifies that destructured props lose reactivity as the root cause",
+        "Suggests watch(() => props.userId, ...) with getter function as a fix",
+        "Mentions Vue 3.5+ reactive destructure as an alternative if applicable",
+        "Does NOT suggest using reactive() as a fix"
+      ]
+    }
+  ]
+}

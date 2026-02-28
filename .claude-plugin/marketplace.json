@@ -1,0 +1,14 @@
+{
+  "name": "vue-component",
+  "description": "Agent skill for writing correct Vue 3 single-file components. Covers Composition API pitfalls, reactivity gotchas, component design patterns, and accessibility essentials.",
+  "plugins": [
+    {
+      "name": "vue-component",
+      "source": "./",
+      "description": "MUST be used when creating, refactoring, or reviewing Vue 3 single-file components (.vue files). Covers script setup, TypeScript typing, reactivity pitfalls, v-model patterns, component splitting, and data flow. Trigger on: 'Vue component', 'SFC', '.vue file', 'script setup', 'defineProps', 'defineEmits', 'defineModel', or any task involving creating/editing *.vue files.",
+      "skills": [
+        "./skills/vue-component"
+      ]
+    }
+  ]
+}
